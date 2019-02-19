@@ -5,6 +5,7 @@
 package com.xiongxl.test;
 
 import com.xiongxl.beans.Person;
+import com.xiongxl.beans.Worker;
 
 import java.lang.reflect.Field;
 
@@ -51,10 +52,20 @@ public class TestReflex {
 
         /*** 以下 通过 Class 类获取成员变量、成员方法、接口、超类、构造方法等 ***/
 
-        String className = c2.getName();   //getName() 获得类的全类名【com.xiongxl.beans.Person】
-        Field[] fields = c2.getFields();   //getFields() 获得类的Public类型的属性
+        /** 方法1：getName() 获取类的全类名 **/
+        String className = c2.getName();   //【com.xiongxl.beans.Person】
+
+        /** 方法2：getFields() 获取类的Public类型的属性,包括父类中的字段 **/
+        Class c4 = Worker.class;
+        Field[] fields = c4.getFields();
         for (Field field : fields) {
-            field.getName();      // age 、 sex
+            field.getName();      // 【 age、sex 】
+        }
+
+        /** 方法3：getDeclaredFields() 获取类的所有属性，即包括public,private和protected,但是不包括父类声明的字段  **/
+        Field[] allFields = c2.getDeclaredFields();
+        for (Field field : allFields) {
+            field.getName();  // 【name、age、sex】
         }
     }
 }

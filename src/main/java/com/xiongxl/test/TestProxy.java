@@ -9,7 +9,7 @@ import com.xiongxl.proxy.impl.StudentsProxy;
 import com.xiongxl.proxy.intf.IStudent;
 
 /**
- *
+ * 静态代理测试
  * @author xiongxl
  * @version $Id: TestProxy.java, v 0.1 2019-02-21 下午11:18 xiongxl Exp $$
  */
